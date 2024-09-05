@@ -3,6 +3,7 @@
 import { useState, useRef } from "react";
 import styled from "styled-components";
 import html2canvas from "html2canvas";
+import ThreeCheckBox from "@/components/ThreeCheckBox";
 
 const Container = styled.div`
   display: flex;
@@ -52,14 +53,6 @@ const TextArea = styled.textarea`
   border-radius: 5px;
 `;
 
-const CheckboxGroup = styled.div`
-  margin-bottom: 1rem;
-`;
-
-const CheckboxLabel = styled.label`
-  margin-right: 1rem;
-`;
-
 const Button = styled.button`
   padding: 0.75rem 1.5rem;
   background-color: #0070f3;
@@ -90,15 +83,29 @@ const DownloadButton = styled(Button)`
   background-color: #28a745;
 `;
 
+const TitleText = styled.h3`
+  font-size: 19px;
+`;
+
 export default function Home() {
   const [twitterId, setTwitterId] = useState("");
   const [bio, setBio] = useState("");
   const [interests, setInterests] = useState("");
   const [hobbies, setHobbies] = useState("");
-  const [selectedOptions, setSelectedOptions] = useState({
+  const [selectedServer, setSelectedServer] = useState({
     Asia: false,
     America: false,
     Europe: false,
+  });
+  const [selectedGender, setSelectedGender] = useState({
+    male: false,
+    female: false,
+    hide: false,
+  });
+  const [selectedAge, setSelectedAge] = useState({
+    adult: false,
+    nonAdult: false,
+    hide: false,
   });
   const [showTable, setShowTable] = useState(false);
   const tableRef = useRef(null);
@@ -108,9 +115,22 @@ export default function Home() {
     setShowTable(true);
   };
 
-  const handleCheckboxChange = (e) => {
-    setSelectedOptions({
-      ...selectedOptions,
+  const handleServerChange = (e) => {
+    setSelectedServer({
+      ...selectedServer,
+      [e.target.name]: e.target.checked,
+    });
+  };
+
+  const handleGenderChange = (e) => {
+    setSelectedGender({
+      ...selectedGender,
+      [e.target.name]: e.target.checked,
+    });
+  };
+  const handleAgeChange = (e) => {
+    setSelectedAge({
+      ...selectedAge,
       [e.target.name]: e.target.checked,
     });
   };
@@ -129,6 +149,7 @@ export default function Home() {
     <Container>
       <FormContainer>
         <h1>트친소 표 생성기</h1>
+        <TitleText>작성자 정보</TitleText>
         <Form onSubmit={handleSubmit}>
           <Input
             type="text"
@@ -158,35 +179,33 @@ export default function Home() {
             onChange={(e) => setHobbies(e.target.value)}
             required
           />
-          <CheckboxGroup>
-            <CheckboxLabel>
-              <input
-                type="checkbox"
-                name="Asia"
-                checked={selectedOptions.Asia}
-                onChange={handleCheckboxChange}
-              />
-              Asia
-            </CheckboxLabel>
-            <CheckboxLabel>
-              <input
-                type="checkbox"
-                name="America"
-                checked={selectedOptions.America}
-                onChange={handleCheckboxChange}
-              />
-              America
-            </CheckboxLabel>
-            <CheckboxLabel>
-              <input
-                type="checkbox"
-                name="Europe"
-                checked={selectedOptions.Europe}
-                onChange={handleCheckboxChange}
-              />
-              Europe
-            </CheckboxLabel>
-          </CheckboxGroup>
+          <ThreeCheckBox
+            checked1={selectedServer.Asia}
+            checked1Name={"Asia"}
+            checked2={selectedServer.America}
+            checked2Name={"America"}
+            checked3={selectedServer.Europe}
+            checked3Name={"Europe"}
+            onClickBox={handleServerChange}
+          />
+          <ThreeCheckBox
+            checked1={selectedGender.male}
+            checked1Name={"남자"}
+            checked2={selectedGender.female}
+            checked2Name={"여자"}
+            checked3={selectedGender.hide}
+            checked3Name={"비공개"}
+            onClickBox={handleGenderChange}
+          />
+          <ThreeCheckBox
+            checked1={selectedAge.adult}
+            checked1Name={"성인"}
+            checked2={selectedAge.nonAdult}
+            checked2Name={"미성년자"}
+            checked3={selectedAge.hide}
+            checked3Name={"비공개"}
+            onClickBox={handleAgeChange}
+          />
           <Button type="submit">표 생성</Button>
         </Form>
 
