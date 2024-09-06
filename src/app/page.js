@@ -3,7 +3,10 @@
 import { useState, useRef } from "react";
 import styled from "styled-components";
 import html2canvas from "html2canvas";
+import { TopText } from "@/styles/Texts";
 import ThreeCheckBox from "@/components/ThreeCheckBox";
+import OneLineTextInput from "@/components/OneLineTextInput";
+import OneLineDropdown from "@/components/OneLineDropdwon";
 
 const Container = styled.div`
   display: flex;
@@ -34,15 +37,6 @@ const Form = styled.form`
   flex-direction: column;
   align-items: center;
   width: 100%;
-`;
-
-const Input = styled.input`
-  /* background-color: pink; */
-  width: 100%;
-  padding: 0.5rem;
-  margin-bottom: 1rem;
-  border: 1px solid #ddd;
-  border-radius: 5px;
 `;
 
 const TextArea = styled.textarea`
@@ -88,20 +82,19 @@ const TitleText = styled.h3`
 `;
 
 export default function Home() {
-  const [twitterId, setTwitterId] = useState("");
+  const [nick, setNick] = useState("");
+  const [xId, setXId] = useState("");
+  const [gender, setGender] = useState("미설정");
   const [bio, setBio] = useState("");
   const [interests, setInterests] = useState("");
   const [hobbies, setHobbies] = useState("");
+
   const [selectedServer, setSelectedServer] = useState({
     Asia: false,
     America: false,
     Europe: false,
   });
-  const [selectedGender, setSelectedGender] = useState({
-    male: false,
-    female: false,
-    hide: false,
-  });
+
   const [selectedAge, setSelectedAge] = useState({
     adult: false,
     nonAdult: false,
@@ -118,13 +111,6 @@ export default function Home() {
   const handleServerChange = (e) => {
     setSelectedServer({
       ...selectedServer,
-      [e.target.name]: e.target.checked,
-    });
-  };
-
-  const handleGenderChange = (e) => {
-    setSelectedGender({
-      ...selectedGender,
       [e.target.name]: e.target.checked,
     });
   };
@@ -148,16 +134,26 @@ export default function Home() {
   return (
     <Container>
       <FormContainer>
-        <h1>트친소 표 생성기</h1>
-        <TitleText>작성자 정보</TitleText>
+        <TopText>작성자 정보</TopText>
         <Form onSubmit={handleSubmit}>
-          <Input
-            type="text"
-            placeholder="이름"
-            value={twitterId}
-            onChange={(e) => setTwitterId(e.target.value)}
-            required
+          <OneLineTextInput
+            placeholder="닉네임"
+            value={nick}
+            onChange={(e) => setNick(e.target.value)}
           />
+          <OneLineTextInput
+            placeholder="X ID"
+            value={xId}
+            onChange={(e) => setXId(e.target.value)}
+          />
+          <OneLineDropdown
+            value={gender}
+            value1Name={"남자"}
+            value2Name={"여자"}
+            value3Name={"비공개"}
+            onChange={(e) => setGender(e.target.value)}
+          />
+
           <TextArea
             placeholder="자기소개"
             value={bio}
@@ -165,20 +161,20 @@ export default function Home() {
             rows={4}
             required
           />
-          <Input
+          {/* <OneLineInput
             type="text"
             placeholder="관심사 (쉼표로 구분)"
             value={interests}
             onChange={(e) => setInterests(e.target.value)}
             required
           />
-          <Input
+          <OneLineInput
             type="text"
             placeholder="취미 (쉼표로 구분)"
             value={hobbies}
             onChange={(e) => setHobbies(e.target.value)}
             required
-          />
+          /> */}
           <ThreeCheckBox
             checked1={selectedServer.Asia}
             checked1Name={"Asia"}
@@ -187,15 +183,6 @@ export default function Home() {
             checked3={selectedServer.Europe}
             checked3Name={"Europe"}
             onClickBox={handleServerChange}
-          />
-          <ThreeCheckBox
-            checked1={selectedGender.male}
-            checked1Name={"남자"}
-            checked2={selectedGender.female}
-            checked2Name={"여자"}
-            checked3={selectedGender.hide}
-            checked3Name={"비공개"}
-            onClickBox={handleGenderChange}
           />
           <ThreeCheckBox
             checked1={selectedAge.adult}
