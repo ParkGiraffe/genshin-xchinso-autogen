@@ -1,12 +1,13 @@
 "use client";
 
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import styled from "styled-components";
 import html2canvas from "html2canvas";
 import { TopText } from "@/styles/Texts";
 import ThreeCheckBox from "@/components/ThreeCheckBox";
 import OneLineTextInput from "@/components/OneLineTextInput";
 import OneLineDropdown from "@/components/OneLineDropdwon";
+import Bio from "@/components/Bio";
 
 const Container = styled.div`
   display: flex;
@@ -77,11 +78,9 @@ const DownloadButton = styled(Button)`
   background-color: #28a745;
 `;
 
-const TitleText = styled.h3`
-  font-size: 19px;
-`;
-
 export default function Home() {
+  const [imageUpload, setImageUpload] = useState(null);
+
   const [nick, setNick] = useState("");
   const [xId, setXId] = useState("");
   const [gender, setGender] = useState("미설정");
@@ -135,6 +134,12 @@ export default function Home() {
     <Container>
       <FormContainer>
         <TopText>작성자 정보</TopText>
+        <Bio
+          imageUpload={imageUpload}
+          onUpload={(event) => {
+            setImageUpload(event.target.files[0]);
+          }}
+        />
         <Form onSubmit={handleSubmit}>
           <OneLineTextInput
             placeholder="닉네임"
@@ -153,7 +158,6 @@ export default function Home() {
             value3Name={"비공개"}
             onChange={(e) => setGender(e.target.value)}
           />
-
           <TextArea
             placeholder="자기소개"
             value={bio}
@@ -229,12 +233,3 @@ export default function Home() {
     </Container>
   );
 }
-
-const Main = styled.main`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  /* padding: 6rem; */
-  min-height: 100vh;
-  background-color: white;
-`;

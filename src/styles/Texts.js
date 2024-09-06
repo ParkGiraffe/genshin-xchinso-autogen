@@ -8,6 +8,7 @@ const FormText = styled.text`
 const TopText = styled.text`
   font-size: 30px;
   font-weight: bold;
+  margin-bottom: 15px;
 `;
 
 const FormTextContainer = styled.div`
