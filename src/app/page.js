@@ -79,12 +79,17 @@ const DownloadButton = styled(Button)`
 `;
 
 export default function Home() {
+  const [bio, setBio] = useState("");
   const [imageUpload, setImageUpload] = useState(null);
-
   const [nick, setNick] = useState("");
   const [xId, setXId] = useState("");
   const [gender, setGender] = useState("미설정");
-  const [bio, setBio] = useState("");
+  const [age, setAge] = useState("미설정");
+
+  // 원신 정보
+  const [uid, setUid] = useState("");
+  const [server, setServer] = useState("");
+
   const [interests, setInterests] = useState("");
   const [hobbies, setHobbies] = useState("");
 
@@ -110,12 +115,6 @@ export default function Home() {
   const handleServerChange = (e) => {
     setSelectedServer({
       ...selectedServer,
-      [e.target.name]: e.target.checked,
-    });
-  };
-  const handleAgeChange = (e) => {
-    setSelectedAge({
-      ...selectedAge,
       [e.target.name]: e.target.checked,
     });
   };
@@ -152,12 +151,36 @@ export default function Home() {
             onChange={(e) => setXId(e.target.value)}
           />
           <OneLineDropdown
+            placeholder={"성별"}
             value={gender}
             value1Name={"남자"}
             value2Name={"여자"}
             value3Name={"비공개"}
             onChange={(e) => setGender(e.target.value)}
           />
+          <OneLineDropdown
+            placeholder={"연령대"}
+            value={age}
+            value1Name={"성인"}
+            value2Name={"미성년자"}
+            value3Name={"비공개"}
+            onChange={(e) => setAge(e.target.value)}
+          />
+          <TopText>원신 정보</TopText>
+          <OneLineTextInput
+            placeholder="X ID"
+            value={uid}
+            onChange={(e) => setUid(e.target.value)}
+          />
+          <OneLineDropdown
+            placeholder={"서버"}
+            value={server}
+            value1Name={"Asia"}
+            value2Name={"America"}
+            value3Name={"Europe"}
+            onChange={(e) => setServer(e.target.value)}
+          />
+
           <TextArea
             placeholder="자기소개"
             value={bio}
@@ -188,15 +211,7 @@ export default function Home() {
             checked3Name={"Europe"}
             onClickBox={handleServerChange}
           />
-          <ThreeCheckBox
-            checked1={selectedAge.adult}
-            checked1Name={"성인"}
-            checked2={selectedAge.nonAdult}
-            checked2Name={"미성년자"}
-            checked3={selectedAge.hide}
-            checked3Name={"비공개"}
-            onClickBox={handleAgeChange}
-          />
+
           <Button type="submit">표 생성</Button>
         </Form>
 

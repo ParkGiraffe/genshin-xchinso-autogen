@@ -6,7 +6,7 @@ import { Select, SelectContainer } from "@/styles/Inputs";
 
 const OneLineDropdown = (props) => {
   const {
-    placeholder = "성별",
+    placeholder,
     value,
     value1Name,
     value2Name,
