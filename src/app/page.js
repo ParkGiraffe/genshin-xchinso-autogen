@@ -8,6 +8,7 @@ import ThreeCheckBox from "@/components/ThreeCheckBox";
 import OneLineTextInput from "@/components/OneLineTextInput";
 import OneLineDropdown from "@/components/OneLineDropdwon";
 import Bio from "@/components/Bio";
+import Checklist from "@/components/CheckList";
 
 const Container = styled.div`
   display: flex;
@@ -89,6 +90,7 @@ export default function Home() {
   // 원신 정보
   const [uid, setUid] = useState("");
   const [server, setServer] = useState("");
+  const [playType, setPlayType] = useState("");
 
   const [interests, setInterests] = useState("");
   const [hobbies, setHobbies] = useState("");
@@ -99,11 +101,6 @@ export default function Home() {
     Europe: false,
   });
 
-  const [selectedAge, setSelectedAge] = useState({
-    adult: false,
-    nonAdult: false,
-    hide: false,
-  });
   const [showTable, setShowTable] = useState(false);
   const tableRef = useRef(null);
 
@@ -180,6 +177,17 @@ export default function Home() {
             value3Name={"Europe"}
             onChange={(e) => setServer(e.target.value)}
           />
+          <Checklist
+            elements={[
+              "스크린샷",
+              "나선비경",
+              "스토리",
+              "다인모드",
+              "월드탐색",
+              "캐릭육성",
+            ]}
+            onChecked={(e) => setPlayType(e)}
+          />
 
           <TextArea
             placeholder="자기소개"
@@ -202,15 +210,6 @@ export default function Home() {
             onChange={(e) => setHobbies(e.target.value)}
             required
           /> */}
-          <ThreeCheckBox
-            checked1={selectedServer.Asia}
-            checked1Name={"Asia"}
-            checked2={selectedServer.America}
-            checked2Name={"America"}
-            checked3={selectedServer.Europe}
-            checked3Name={"Europe"}
-            onClickBox={handleServerChange}
-          />
 
           <Button type="submit">표 생성</Button>
         </Form>

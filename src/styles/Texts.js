@@ -18,4 +18,9 @@ const FormTextContainer = styled.div`
   justify-content: center;
 `;
 
-export { FormText, FormTextContainer, TopText };
+const ChecklistText = styled.text`
+  font-size: 17px;
+  font-weight: bold;
+`;
+
+export { FormText, FormTextContainer, TopText, ChecklistText };

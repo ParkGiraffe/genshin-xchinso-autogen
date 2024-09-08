@@ -11,4 +11,16 @@ const OneLineContainer = styled.div`
   /* background-color: pink; */
 `;
 
-export {OneLineContainer};
+const ChecklistContainer = styled.div`
+
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 300px;
+  margin-left: 2em;
+  margin-top: 1em;
+  margin-bottom: 1em;
+  /* background-color: pink; */
+`;
+
+export { OneLineContainer, ChecklistContainer };
