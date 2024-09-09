@@ -5,15 +5,7 @@ import { useState } from "react";
 import { Select, SelectContainer } from "@/styles/Inputs";
 
 const OneLineDropdown = (props) => {
-  const {
-    placeholder,
-    value,
-    value1Name,
-    value2Name,
-    value3Name,
-    onChange,
-  } = props;
-
+  const { placeholder, value, pickList, onChange } = props;
   return (
     <OneLineContainer>
       <FormTextContainer>
@@ -24,9 +16,9 @@ const OneLineDropdown = (props) => {
           <option value="" disabled>
             선택하세요
           </option>
-          <option value={value1Name}>{value1Name}</option>
-          <option value={value2Name}>{value2Name}</option>
-          <option value={value3Name}>{value3Name}</option>
+          {pickList.map((element, idx) => (
+            <option key={idx} value={element}>{element}</option>
+          ))}
         </Select>
         <Arrow>▼</Arrow>
       </SelectContainer>

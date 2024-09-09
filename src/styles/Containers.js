@@ -12,7 +12,6 @@ const OneLineContainer = styled.div`
 `;
 
 const ChecklistContainer = styled.div`
-
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -23,4 +22,8 @@ const ChecklistContainer = styled.div`
   /* background-color: pink; */
 `;
 
-export { OneLineContainer, ChecklistContainer };
+const SectionDivder = styled.div`
+  height: 80px;
+`;
+
+export { OneLineContainer, ChecklistContainer, SectionDivder };

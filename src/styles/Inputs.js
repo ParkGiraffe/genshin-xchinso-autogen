@@ -1,11 +1,13 @@
 import styled from "styled-components";
 
 const TextInput = styled.input`
-  width: 225px;
-  height: 35px;
-  border: none;
+  /* appearance: none; */
   padding-block: 0px; // input 자체 padding 제거
   padding-inline: 0px; // input 자체 padding 제거
+  padding-left: 10px; // 텍스트의 왼쪽에 10px 여백 추가
+  width: 215px; // padding-left와 총합 225가 되게 끔
+  height: 35px;
+  border: none;
   border-radius: 5px;
   background-color: #efecec;
   font-size: 15px;

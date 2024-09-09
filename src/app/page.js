@@ -9,6 +9,7 @@ import OneLineTextInput from "@/components/OneLineTextInput";
 import OneLineDropdown from "@/components/OneLineDropdwon";
 import Bio from "@/components/Bio";
 import Checklist from "@/components/CheckList";
+import { SectionDivder } from "@/styles/Containers";
 
 const Container = styled.div`
   display: flex;
@@ -91,6 +92,7 @@ export default function Home() {
   const [uid, setUid] = useState("");
   const [server, setServer] = useState("");
   const [playType, setPlayType] = useState("");
+  const [bias, setBias] = useState("");
 
   const [interests, setInterests] = useState("");
   const [hobbies, setHobbies] = useState("");
@@ -129,6 +131,7 @@ export default function Home() {
   return (
     <Container>
       <FormContainer>
+        <SectionDivder />
         <TopText>작성자 정보</TopText>
         <Bio
           imageUpload={imageUpload}
@@ -150,31 +153,26 @@ export default function Home() {
           <OneLineDropdown
             placeholder={"성별"}
             value={gender}
-            value1Name={"남자"}
-            value2Name={"여자"}
-            value3Name={"비공개"}
+            pickList={["남자", "여자", "비공개"]}
             onChange={(e) => setGender(e.target.value)}
           />
           <OneLineDropdown
             placeholder={"연령대"}
             value={age}
-            value1Name={"성인"}
-            value2Name={"미성년자"}
-            value3Name={"비공개"}
+            pickList={["성인", "미성년자", "비공개"]}
             onChange={(e) => setAge(e.target.value)}
           />
+          <SectionDivder />
           <TopText>원신 정보</TopText>
           <OneLineTextInput
-            placeholder="X ID"
+            placeholder="UID"
             value={uid}
             onChange={(e) => setUid(e.target.value)}
           />
           <OneLineDropdown
             placeholder={"서버"}
             value={server}
-            value1Name={"Asia"}
-            value2Name={"America"}
-            value3Name={"Europe"}
+            pickList={["Asia", "America", "Europe"]}
             onChange={(e) => setServer(e.target.value)}
           />
           <Checklist
@@ -188,14 +186,21 @@ export default function Home() {
             ]}
             onChecked={(e) => setPlayType(e)}
           />
-
-          <TextArea
+          <OneLineTextInput
+            placeholder="최애캐"
+            value={bias}
+            onChange={(e) => setBias(e.target.value)}
+          />
+          <SectionDivder />
+          <TopText>X 정보</TopText>
+          {/* <TextArea
             placeholder="자기소개"
             value={bio}
             onChange={(e) => setBio(e.target.value)}
             rows={4}
             required
-          />
+          /> */}
+
           {/* <OneLineInput
             type="text"
             placeholder="관심사 (쉼표로 구분)"
