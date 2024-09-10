@@ -10,10 +10,8 @@ const OneLineTextInput = (props) => {
       <FormTextContainer>
         <FormText>{placeholder}</FormText>
       </FormTextContainer>
-      {/* <Spacer /> */}
       <TextInput
         type="text"
-        // placeholder='입력하세요'
         value={value}
         onChange={onChange}
         required

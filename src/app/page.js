@@ -94,6 +94,9 @@ export default function Home() {
   const [playType, setPlayType] = useState("");
   const [bias, setBias] = useState("");
 
+  // X 정보
+  const [xType, setXType] = useState('');
+
   const [interests, setInterests] = useState("");
   const [hobbies, setHobbies] = useState("");
 
@@ -193,6 +196,17 @@ export default function Home() {
           />
           <SectionDivder />
           <TopText>X 정보</TopText>
+          <Checklist
+            elements={[
+              "RT",
+              "마음",
+              "일상/썰",
+              "그림",
+              "탐라대화",
+              "구독",
+            ]}
+            onChecked={(e) => setXType(e)}
+          />
           {/* <TextArea
             placeholder="자기소개"
             value={bio}
