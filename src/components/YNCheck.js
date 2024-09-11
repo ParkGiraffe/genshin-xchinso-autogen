@@ -7,6 +7,7 @@ import {
 } from "@/styles/CheckBox";
 import { ChecklistContainer } from "@/styles/Containers";
 import React, { useState } from "react";
+import styled from "styled-components";
 
 // Styled Components 정의
 
@@ -63,7 +64,11 @@ export default function YNCheck(props) {
         />
         <ChecklistText>Yes</ChecklistText>
       </CheckboxLabel>
-      <TextInput type="text" value={plusInfo} onChange={handleTyping} />
+      <CustomTextInput type="text" value={plusInfo} onChange={handleTyping} />
     </ChecklistContainer>
   );
 }
+const CustomTextInput = styled(TextInput)`
+  width: 275px;
+  /* padding-left: ; */
+`;

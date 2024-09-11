@@ -6,7 +6,7 @@ const OneLineContainer = styled.div`
   align-items: center;
   justify-content: flex-end;
   width: 300px;
-  margin-bottom: 9px;
+  margin-bottom: 0.7em;
 
   /* background-color: pink; */
 `;
@@ -29,7 +29,7 @@ const ChecklistContainer = styled.div`
   width: 300px;
   margin-left: 2em;
   margin-top: 1em;
-  margin-bottom: 1em;
+  margin-bottom: 1.3em;
   /* background-color: pink; */
 `;
 

@@ -101,6 +101,8 @@ export default function Home() {
   const [tendency, setTendency] = useState(""); // 덕질 성향
   const [trap, setTrap] = useState(""); // 지뢰
   const [genre, setGenre] = useState(""); // 타장르
+  const [farewell, setFarewell] = useState(""); // 이별
+  const [comment, setComment] = useState(""); // 코멘트
 
   const [interests, setInterests] = useState("");
   const [hobbies, setHobbies] = useState("");
@@ -117,13 +119,6 @@ export default function Home() {
   const handleSubmit = (e) => {
     e.preventDefault();
     setShowTable(true);
-  };
-
-  const handleServerChange = (e) => {
-    setSelectedServer({
-      ...selectedServer,
-      [e.target.name]: e.target.checked,
-    });
   };
 
   const handleDownload = async () => {
@@ -223,13 +218,17 @@ export default function Home() {
               // console.log(e)
             }}
           />
-          {/* <TextArea
-            placeholder="자기소개"
-            value={bio}
-            onChange={(e) => setBio(e.target.value)}
-            rows={4}
-            required
-          /> */}
+          <OneLineDropdown
+            placeholder={"이별"}
+            value={server}
+            pickList={["언팔로우", "블언블", "블락", "트정X"]}
+            onChange={(e) => setFarewell(e.target.value)}
+          />
+          <MultiLineTextInput
+            placeholder="코멘트"
+            value={comment}
+            onChange={(e) => setComment(e.target.value)}
+          />
 
           <Button type="submit">표 생성</Button>
         </Form>
