@@ -10,7 +10,7 @@ import React, { useState } from "react";
 // Styled Components 정의
 
 export default function Checklist(props) {
-  const { elements = [1, 2, 3], onChecked } = props;
+  const { elements = [1, 2, 3], onChecked, placeholder } = props;
   const [checkedList, setCheckedList] = useState(
     new Array(elements.length).fill(false)
   );
@@ -35,7 +35,7 @@ export default function Checklist(props) {
   return (
     <ChecklistContainer>
       <FormTextContainer>
-        <FormText>플레이타입</FormText>
+        <FormText>{placeholder}</FormText>
       </FormTextContainer>
       <ChecklistSpacer />
       {elements.map((element, idx) => (

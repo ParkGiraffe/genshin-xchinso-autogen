@@ -10,6 +10,8 @@ import OneLineDropdown from "@/components/OneLineDropdwon";
 import Bio from "@/components/Bio";
 import Checklist from "@/components/CheckList";
 import { SectionDivder } from "@/styles/Containers";
+import MultiLineTextInput from "@/components/MultiLineTextInput";
+import YNCheck from "@/components/YNCheck";
 
 const Container = styled.div`
   display: flex;
@@ -95,7 +97,10 @@ export default function Home() {
   const [bias, setBias] = useState("");
 
   // X 정보
-  const [xType, setXType] = useState('');
+  const [xType, setXType] = useState(""); // 트위터 활동
+  const [tendency, setTendency] = useState(""); // 덕질 성향
+  const [trap, setTrap] = useState(""); // 지뢰
+  const [genre, setGenre] = useState(""); // 타장르
 
   const [interests, setInterests] = useState("");
   const [hobbies, setHobbies] = useState("");
@@ -197,36 +202,32 @@ export default function Home() {
           <SectionDivder />
           <TopText>X 정보</TopText>
           <Checklist
-            elements={[
-              "RT",
-              "마음",
-              "일상/썰",
-              "그림",
-              "탐라대화",
-              "구독",
-            ]}
+            placeholder="트위터 활동"
+            elements={["RT", "마음", "일상/썰", "그림", "탐라대화", "구독"]}
             onChecked={(e) => setXType(e)}
+          />
+          <Checklist
+            placeholder="덕질 성향"
+            elements={["HL", "GL", "BL", "Non-CP", "드림"]}
+            onChecked={(e) => setTendency(e)}
+          />
+          <MultiLineTextInput
+            placeholder="지뢰"
+            value={trap}
+            onChange={(e) => setTrap(e.target.value)}
+          />
+          <YNCheck
+            placeholder="타장르"
+            onChange={(e) => {
+              setGenre(e);
+              // console.log(e)
+            }}
           />
           {/* <TextArea
             placeholder="자기소개"
             value={bio}
             onChange={(e) => setBio(e.target.value)}
             rows={4}
-            required
-          /> */}
-
-          {/* <OneLineInput
-            type="text"
-            placeholder="관심사 (쉼표로 구분)"
-            value={interests}
-            onChange={(e) => setInterests(e.target.value)}
-            required
-          />
-          <OneLineInput
-            type="text"
-            placeholder="취미 (쉼표로 구분)"
-            value={hobbies}
-            onChange={(e) => setHobbies(e.target.value)}
             required
           /> */}
 

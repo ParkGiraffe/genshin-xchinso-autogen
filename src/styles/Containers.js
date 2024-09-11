@@ -11,6 +11,17 @@ const OneLineContainer = styled.div`
   /* background-color: pink; */
 `;
 
+const MultiLineContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: flex-end;
+  width: 300px;
+  margin-bottom: 9px;
+
+  /* background-color: pink; */
+`;
+
 const ChecklistContainer = styled.div`
   display: flex;
   flex-direction: column;
@@ -26,4 +37,9 @@ const SectionDivder = styled.div`
   height: 80px;
 `;
 
-export { OneLineContainer, ChecklistContainer, SectionDivder };
+export {
+  OneLineContainer,
+  ChecklistContainer,
+  SectionDivder,
+  MultiLineContainer,
+};
