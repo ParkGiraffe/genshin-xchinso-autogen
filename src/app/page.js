@@ -44,14 +44,6 @@ const Form = styled.form`
   width: 100%;
 `;
 
-const TextArea = styled.textarea`
-  width: 100%;
-  padding: 0.5rem;
-  margin-bottom: 1rem;
-  border: 1px solid #ddd;
-  border-radius: 5px;
-`;
-
 const Button = styled.button`
   padding: 0.75rem 1.5rem;
   background-color: #0070f3;
