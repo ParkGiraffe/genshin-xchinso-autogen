@@ -9,6 +9,7 @@ import OneLineTextInput from "@/components/OneLineTextInput";
 import OneLineDropdown from "@/components/OneLineDropdwon";
 import Bio from "@/components/Bio";
 import Checklist from "@/components/CheckList";
+import { SubmitButton } from "@/styles/Buttons";
 import { SectionDivder } from "@/styles/Containers";
 import MultiLineTextInput from "@/components/MultiLineTextInput";
 import YNCheck from "@/components/YNCheck";
@@ -42,15 +43,6 @@ const Form = styled.form`
   flex-direction: column;
   align-items: center;
   width: 100%;
-`;
-
-const Button = styled.button`
-  padding: 0.75rem 1.5rem;
-  background-color: #0070f3;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
 `;
 
 const Table = styled.table`
@@ -222,7 +214,7 @@ export default function Home() {
             onChange={(e) => setComment(e.target.value)}
           />
 
-          <Button type="submit">표 생성</Button>
+          <SubmitButton type="submit">표 생성</SubmitButton>
         </Form>
 
         {showTable && (
