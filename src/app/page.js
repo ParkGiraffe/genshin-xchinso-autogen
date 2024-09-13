@@ -91,12 +91,6 @@ export default function Home() {
   const [interests, setInterests] = useState("");
   const [hobbies, setHobbies] = useState("");
 
-  const [selectedServer, setSelectedServer] = useState({
-    Asia: false,
-    America: false,
-    Europe: false,
-  });
-
   const [showTable, setShowTable] = useState(false);
   const tableRef = useRef(null);
 
