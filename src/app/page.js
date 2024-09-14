@@ -1,10 +1,9 @@
 "use client";
 
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef } from "react";
 import styled from "styled-components";
 import html2canvas from "html2canvas";
 import { TopText } from "@/styles/Texts";
-import ThreeCheckBox from "@/components/ThreeCheckBox";
 import OneLineTextInput from "@/components/OneLineTextInput";
 import OneLineDropdown from "@/components/OneLineDropdwon";
 import Bio from "@/components/Bio";
@@ -19,16 +18,11 @@ const Container = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  /* width: 100vw; */
-  /* height: 100vh; */
-  /* background-color: #f0f0f0; */
 `;
 
 const FormContainer = styled.div`
   background-color: cyan;
-  /* border-radius: 10px; */
   padding: 20px;
-  /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); */
   display: flex;
   flex-direction: column;
   align-items: center;
