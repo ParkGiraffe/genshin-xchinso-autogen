@@ -9,16 +9,9 @@ import OneLineDropdown from "@/components/OneLineDropdwon";
 import Bio from "@/components/Bio";
 import Checklist from "@/components/CheckList";
 import { SubmitButton } from "@/styles/Buttons";
-import { SectionDivder } from "@/styles/Containers";
+import { Main, SectionDivder } from "@/styles/Containers";
 import MultiLineTextInput from "@/components/MultiLineTextInput";
 import YNCheck from "@/components/YNCheck";
-
-const Container = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-`;
 
 const FormContainer = styled.div`
   background-color: cyan;
@@ -104,7 +97,7 @@ export default function Home() {
   };
 
   return (
-    <Container>
+    <Main>
       <FormContainer>
         <SectionDivder />
         <TopText>작성자 정보</TopText>
@@ -187,7 +180,6 @@ export default function Home() {
             placeholder="타장르"
             onChange={(e) => {
               setGenre(e);
-              // console.log(e)
             }}
           />
           <OneLineDropdown
@@ -235,6 +227,6 @@ export default function Home() {
           </>
         )}
       </FormContainer>
-    </Container>
+    </Main>
   );
 }
