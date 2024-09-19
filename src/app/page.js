@@ -48,10 +48,20 @@ const TableHeader = styled.th`
   padding: 8px;
 `;
 
+const Button = styled.button`
+  padding: 0.75rem 1.5rem;
+  background-color: #0070f3;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+`;
+
 const DownloadButton = styled(Button)`
   margin-top: 1rem;
   background-color: #28a745;
 `;
+
 
 export default function Home() {
   const [bio, setBio] = useState("");
