@@ -207,35 +207,9 @@ export default function Home() {
           <SubmitButton type="submit">표 생성</SubmitButton>
         </Form>
 
-        {showTable && (
-          <>
-            <div ref={tableRef}>
-              <Table>
-                <tbody>
-                  <tr>
-                    <TableHeader>트위터 아이디</TableHeader>
-                    <TableCell>@{twitterId}</TableCell>
-                  </tr>
-                  <tr>
-                    <TableHeader>자기소개</TableHeader>
-                    <TableCell>{bio}</TableCell>
-                  </tr>
-                  <tr>
-                    <TableHeader>관심사</TableHeader>
-                    <TableCell>{interests.split(",").join(", ")}</TableCell>
-                  </tr>
-                  <tr>
-                    <TableHeader>취미</TableHeader>
-                    <TableCell>{hobbies.split(",").join(", ")}</TableCell>
-                  </tr>
-                </tbody>
-              </Table>
-            </div>
-            <DownloadButton onClick={handleDownload}>
-              이미지로 저장
-            </DownloadButton>
-          </>
-        )}
+        <div>
+          
+        </div>
       </FormContainer>
     </Main>
   );
