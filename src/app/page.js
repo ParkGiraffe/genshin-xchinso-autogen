@@ -12,6 +12,7 @@ import { SubmitButton } from "@/styles/Buttons";
 import { Main, SectionDivder } from "@/styles/Containers";
 import MultiLineTextInput from "@/components/MultiLineTextInput";
 import YNCheck from "@/components/YNCheck";
+import ImageCanvas from "@/components/ImageCanvas";
 
 const FormContainer = styled.div`
   background-color: cyan;
@@ -62,10 +63,9 @@ const DownloadButton = styled(Button)`
   background-color: #28a745;
 `;
 
-
 export default function Home() {
-  const [bio, setBio] = useState("");
-  const [imageUpload, setImageUpload] = useState(null);
+  const [bio, setBio] = useState(null);
+  // const [imageUpload, setImageUpload] = useState(null);
   const [nick, setNick] = useState("");
   const [xId, setXId] = useState("");
   const [gender, setGender] = useState("미설정");
@@ -85,25 +85,21 @@ export default function Home() {
   const [farewell, setFarewell] = useState(""); // 이별
   const [comment, setComment] = useState(""); // 코멘트
 
-  const [interests, setInterests] = useState("");
-  const [hobbies, setHobbies] = useState("");
+  // 이미지
+  const [backImage, setBackImage] = useState(null);
+  const imageRef = useRef(null);
 
   const [showTable, setShowTable] = useState(false);
   const tableRef = useRef(null);
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    setShowTable(true);
-  };
-
-  const handleDownload = async () => {
-    if (tableRef.current) {
-      const canvas = await html2canvas(tableRef.current);
+  const handleSubmit = () => {
+    const element = imageRef.current;
+    html2canvas(element).then((canvas) => {
       const link = document.createElement("a");
       link.href = canvas.toDataURL("image/png");
-      link.download = "twitter-profile.png";
+      link.download = "profile-overlay.png";
       link.click();
-    }
+    });
   };
 
   return (
@@ -112,9 +108,9 @@ export default function Home() {
         <SectionDivder />
         <TopText>작성자 정보</TopText>
         <Bio
-          imageUpload={imageUpload}
+          imageUpload={bio}
           onUpload={(event) => {
-            setImageUpload(event.target.files[0]);
+            setBio(URL.createObjectURL(event.target.files[0]));
           }}
         />
         <Form onSubmit={handleSubmit}>
@@ -203,13 +199,27 @@ export default function Home() {
             value={comment}
             onChange={(e) => setComment(e.target.value)}
           />
+          <Bio
+            imageUpload={backImage}
+            onUpload={(event) => {
+              setBackImage(URL.createObjectURL(event.target.files[0]));
+            }}
+          />
 
-          <SubmitButton type="submit">표 생성</SubmitButton>
+          <ImageCanvas
+            backImage={backImage}
+            bio={bio}
+            nick={nick}
+            xId={xId}
+            gender={gender}
+            age={age}
+            uid={uid}
+            server={server}
+            bias={bias}
+            comment={comment}
+          />
+          {/* <SubmitButton type="submit">표 생성</SubmitButton> */}
         </Form>
-
-        <div>
-          
-        </div>
       </FormContainer>
     </Main>
   );
