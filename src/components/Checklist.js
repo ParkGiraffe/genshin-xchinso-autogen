@@ -28,8 +28,7 @@ export default function Checklist(props) {
       }
     });
 
-    onChecked(newStr);
-    // console.log(newStr);
+    onChecked(newStr.slice(0, -3));
   };
 
   return (

@@ -7,15 +7,17 @@ import { TopText } from "@/styles/Texts";
 import OneLineTextInput from "@/components/OneLineTextInput";
 import OneLineDropdown from "@/components/OneLineDropdwon";
 import Bio from "@/components/Bio";
-import Checklist from "@/components/CheckList";
 import { SubmitButton } from "@/styles/Buttons";
 import { Main, SectionDivder } from "@/styles/Containers";
 import MultiLineTextInput from "@/components/MultiLineTextInput";
 import YNCheck from "@/components/YNCheck";
 import ImageCanvas from "@/components/ImageCanvas";
+import Checklist from "@/components/Checklist";
+import BackgroundImage from "@/components/BackgroundImage";
+import ImageCanvasFHD from "@/components/ImageCanvasFHD";
 
 const FormContainer = styled.div`
-  background-color: cyan;
+  /* background-color: cyan; */
   padding: 20px;
   display: flex;
   flex-direction: column;
@@ -89,12 +91,12 @@ export default function Home() {
   const [backImage, setBackImage] = useState(null);
   const imageRef = useRef(null);
 
-  const [showTable, setShowTable] = useState(false);
-  const tableRef = useRef(null);
+  const [showFhd, setShowFhd] = useState(false);
 
-  const handleSubmit = () => {
+  const handleDownload = () => {
+    setShowFhd(true);
     const element = imageRef.current;
-    html2canvas(element).then((canvas) => {
+    html2canvas(element, { useCORS: true }).then((canvas) => {
       const link = document.createElement("a");
       link.href = canvas.toDataURL("image/png");
       link.download = "profile-overlay.png";
@@ -113,7 +115,7 @@ export default function Home() {
             setBio(URL.createObjectURL(event.target.files[0]));
           }}
         />
-        <Form onSubmit={handleSubmit}>
+        <Form>
           <OneLineTextInput
             placeholder="닉네임"
             value={nick}
@@ -190,7 +192,7 @@ export default function Home() {
           />
           <OneLineDropdown
             placeholder={"이별"}
-            value={server}
+            value={farewell}
             pickList={["언팔로우", "블언블", "블락", "트정X"]}
             onChange={(e) => setFarewell(e.target.value)}
           />
@@ -199,7 +201,9 @@ export default function Home() {
             value={comment}
             onChange={(e) => setComment(e.target.value)}
           />
-          <Bio
+          <SectionDivder />
+          <TopText>트친소 표 미리보기</TopText>
+          <BackgroundImage
             imageUpload={backImage}
             onUpload={(event) => {
               setBackImage(URL.createObjectURL(event.target.files[0]));
@@ -217,8 +221,39 @@ export default function Home() {
             server={server}
             bias={bias}
             comment={comment}
+            xType={xType}
+            tendency={tendency}
+            genre={genre}
+            farewell={farewell}
+            trap={trap}
+            playType={playType}
           />
           {/* <SubmitButton type="submit">표 생성</SubmitButton> */}
+          <DownloadButton type="button" onClick={handleDownload}>
+            {showFhd ? "다운로드" : "고화질 이미지 생성"}
+          </DownloadButton>
+          <SectionDivder />
+          {showFhd && (
+            <ImageCanvasFHD
+              ref={imageRef}
+              backImage={backImage}
+              bio={bio}
+              nick={nick}
+              xId={xId}
+              gender={gender}
+              age={age}
+              uid={uid}
+              server={server}
+              bias={bias}
+              comment={comment}
+              xType={xType}
+              tendency={tendency}
+              genre={genre}
+              farewell={farewell}
+              trap={trap}
+              playType={playType}
+            />
+          )}
         </Form>
       </FormContainer>
     </Main>
