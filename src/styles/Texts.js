@@ -23,4 +23,29 @@ const ChecklistText = styled.text`
   font-weight: bold;
 `;
 
-export { FormText, FormTextContainer, TopText, ChecklistText };
+const NoticeText = styled.text`
+  font-size: 15px;
+  color: grey;
+  text-align: center;
+`;
+
+const NoticeTextContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 250px;
+
+  .red_text {
+    /* white-space: pre-line; */
+    color: #ff0000;
+  }
+`;
+
+export {
+  FormText,
+  FormTextContainer,
+  TopText,
+  ChecklistText,
+  NoticeText,
+  NoticeTextContainer,
+};

@@ -25,10 +25,10 @@ const ImageCanvas = ({
     const ctx = canvas.getContext("2d");
 
     const img = new Image();
-    img.src = backImage;
+    img.src = backImage || "/image2.png";
 
     const bioImg = new Image();
-    bioImg.src = bio;
+    bioImg.src = bio || "/bio.png";
 
     img.onload = () => {
       // 캔버스 크기 설정 (1920 x 1080)
@@ -49,11 +49,11 @@ const ImageCanvas = ({
 
       // 불투명도 80%인 흰색 사각형 그리기
       ctx.fillStyle = "rgba(255, 255, 255, 0.9)";
-      ctx.fillRect(35, 30, canvas.width - 70, canvas.height - 60);
+      ctx.fillRect(40, 30, canvas.width - 80, canvas.height - 60);
 
       // 텍스트 스타일 설정
       const scaleFactor = canvas.width / 1920;
-      const fontDefaultSize = 45;
+      const fontDefaultSize = 35;
       ctx.font = `${fontDefaultSize * scaleFactor}px Arial`;
       ctx.fillStyle = "#000080"; // 텍스트 색상
       ctx.textAlign = "left"; // 텍스트 정렬
@@ -187,7 +187,7 @@ const ImageCanvas = ({
         text,
         x,
         y,
-        fieldWidth = 510,
+        fieldWidth = 540,
         spacing = 1.05,
         isBold = true
       ) {
@@ -226,7 +226,7 @@ const ImageCanvas = ({
         const imgHeight = bioImg.height;
 
         const imgRatio = imgWidth / imgHeight;
-        const boxSize = 400; // 최종적으로 출력할 크기
+        const boxSize = 420; // 최종적으로 출력할 크기
 
         let newWidth, newHeight, cropX, cropY;
 

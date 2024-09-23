@@ -3,7 +3,7 @@
 import { useState, useRef } from "react";
 import styled from "styled-components";
 import html2canvas from "html2canvas";
-import { TopText } from "@/styles/Texts";
+import { NoticeText, TopText } from "@/styles/Texts";
 import OneLineTextInput from "@/components/OneLineTextInput";
 import OneLineDropdown from "@/components/OneLineDropdwon";
 import Bio from "@/components/Bio";
@@ -52,6 +52,7 @@ const TableHeader = styled.th`
 `;
 
 const Button = styled.button`
+  margin-top: 1rem;
   padding: 0.75rem 1.5rem;
   background-color: #0070f3;
   color: white;
@@ -61,7 +62,6 @@ const Button = styled.button`
 `;
 
 const DownloadButton = styled(Button)`
-  margin-top: 1rem;
   background-color: #28a745;
 `;
 
@@ -93,8 +93,11 @@ export default function Home() {
 
   const [showFhd, setShowFhd] = useState(false);
 
-  const handleDownload = () => {
+  const handleMake2d = () => {
     setShowFhd(true);
+  };
+
+  const handleDownload = () => {
     const element = imageRef.current;
     html2canvas(element, { useCORS: true }).then((canvas) => {
       const link = document.createElement("a");
@@ -229,30 +232,43 @@ export default function Home() {
             playType={playType}
           />
           {/* <SubmitButton type="submit">표 생성</SubmitButton> */}
-          <DownloadButton type="button" onClick={handleDownload}>
-            {showFhd ? "다운로드" : "고화질 이미지 생성"}
-          </DownloadButton>
-          <SectionDivder />
+          <Button type="button" onClick={handleMake2d}>
+            고화질 이미지 생성
+          </Button>
+          <div style={{ height: "30px" }} />
+          <NoticeText>
+            고화질 이미지 생성 버튼을 누르면 1920x1080 크기의 트친소표가
+            출력됩니다. <br />
+            그리고 다운로드 버튼이 활성화됩니다. <br />
+            다운로드 버튼을 누르시면 트친소표가 다운로드됩니다.
+          </NoticeText>
+
           {showFhd && (
-            <ImageCanvasFHD
-              ref={imageRef}
-              backImage={backImage}
-              bio={bio}
-              nick={nick}
-              xId={xId}
-              gender={gender}
-              age={age}
-              uid={uid}
-              server={server}
-              bias={bias}
-              comment={comment}
-              xType={xType}
-              tendency={tendency}
-              genre={genre}
-              farewell={farewell}
-              trap={trap}
-              playType={playType}
-            />
+            <>
+              <DownloadButton type="button" onClick={handleDownload}>
+                다운로드
+              </DownloadButton>
+              <SectionDivder />
+              <ImageCanvasFHD
+                ref={imageRef}
+                backImage={backImage}
+                bio={bio}
+                nick={nick}
+                xId={xId}
+                gender={gender}
+                age={age}
+                uid={uid}
+                server={server}
+                bias={bias}
+                comment={comment}
+                xType={xType}
+                tendency={tendency}
+                genre={genre}
+                farewell={farewell}
+                trap={trap}
+                playType={playType}
+              />
+            </>
           )}
         </Form>
       </FormContainer>
