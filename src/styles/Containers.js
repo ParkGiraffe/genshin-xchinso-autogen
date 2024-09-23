@@ -7,6 +7,25 @@ const Main = styled.div`
   align-items: center;
 `;
 
+const FormContainer = styled.div`
+  /* background-color: cyan; */
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 500px;
+  width: 80%;
+`;
+
+const Form = styled.form`
+  /* background-color: pink; */
+  margin-bottom: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+`;
+
 const OneLineContainer = styled.div`
   display: flex;
   flex-direction: row;
@@ -46,6 +65,8 @@ const SectionDivder = styled.div`
 
 export {
   Main,
+  Form,
+  FormContainer,
   OneLineContainer,
   ChecklistContainer,
   SectionDivder,

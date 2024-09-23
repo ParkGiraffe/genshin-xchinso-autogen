@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
-const SubmitButton = styled.button`
+const Button = styled.button`
+  margin-top: 1rem;
   padding: 0.75rem 1.5rem;
   background-color: #0070f3;
   color: white;
@@ -9,4 +10,8 @@ const SubmitButton = styled.button`
   cursor: pointer;
 `;
 
-export { SubmitButton };
+const DownloadButton = styled(Button)`
+  background-color: #28a745;
+`;
+
+export { Button, DownloadButton };

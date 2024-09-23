@@ -1,69 +1,19 @@
 "use client";
 
 import { useState, useRef } from "react";
-import styled from "styled-components";
 import html2canvas from "html2canvas";
 import { NoticeText, TopText } from "@/styles/Texts";
 import OneLineTextInput from "@/components/OneLineTextInput";
 import OneLineDropdown from "@/components/OneLineDropdwon";
 import Bio from "@/components/Bio";
-import { SubmitButton } from "@/styles/Buttons";
-import { Main, SectionDivder } from "@/styles/Containers";
+import { Button, DownloadButton } from "@/styles/Buttons";
+import { Form, FormContainer, Main, SectionDivder } from "@/styles/Containers";
 import MultiLineTextInput from "@/components/MultiLineTextInput";
 import YNCheck from "@/components/YNCheck";
 import ImageCanvas from "@/components/ImageCanvas";
 import Checklist from "@/components/Checklist";
 import BackgroundImage from "@/components/BackgroundImage";
 import ImageCanvasFHD from "@/components/ImageCanvasFHD";
-
-const FormContainer = styled.div`
-  /* background-color: cyan; */
-  padding: 20px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  max-width: 500px;
-  width: 80%;
-`;
-
-const Form = styled.form`
-  /* background-color: pink; */
-  margin-bottom: 2rem;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 100%;
-`;
-
-const Table = styled.table`
-  width: 100%;
-  border-collapse: collapse;
-  margin-top: 2rem;
-`;
-
-const TableCell = styled.td`
-  border: 1px solid #ddd;
-  padding: 8px;
-`;
-
-const TableHeader = styled.th`
-  border: 1px solid #ddd;
-  padding: 8px;
-`;
-
-const Button = styled.button`
-  margin-top: 1rem;
-  padding: 0.75rem 1.5rem;
-  background-color: #0070f3;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-`;
-
-const DownloadButton = styled(Button)`
-  background-color: #28a745;
-`;
 
 export default function Home() {
   const [bio, setBio] = useState(null);
