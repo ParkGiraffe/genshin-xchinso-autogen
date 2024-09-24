@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useRef } from "react";
+
 import html2canvas from "html2canvas";
 import { NoticeText, TopText } from "@/styles/Texts";
 import OneLineTextInput from "@/components/OneLineTextInput";
@@ -14,6 +15,7 @@ import ImageCanvas from "@/components/ImageCanvas";
 import Checklist from "@/components/Checklist";
 import BackgroundImage from "@/components/BackgroundImage";
 import ImageCanvasFHD from "@/components/ImageCanvasFHD";
+import TextColorPicker from "@/components/TextColorPicker";
 
 export default function Home() {
   const [bio, setBio] = useState(null);
@@ -41,9 +43,11 @@ export default function Home() {
   const [backImage, setBackImage] = useState(null);
   const imageRef = useRef(null);
 
+  const [color, setColor] = useState("#000080"); // 폰트 색상
+
   const [showFhd, setShowFhd] = useState(false);
 
-  const handleMake2d = () => {
+  const toggleMake2d = () => {
     setShowFhd(true);
   };
 
@@ -163,6 +167,8 @@ export default function Home() {
             }}
           />
 
+          <TextColorPicker color={color} onChange={(e) => setColor(e)} />
+
           <ImageCanvas
             backImage={backImage}
             bio={bio}
@@ -181,8 +187,8 @@ export default function Home() {
             trap={trap}
             playType={playType}
           />
-          {/* <SubmitButton type="submit">표 생성</SubmitButton> */}
-          <Button type="button" onClick={handleMake2d}>
+
+          <Button type="button" onClick={toggleMake2d}>
             고화질 이미지 생성
           </Button>
           <div style={{ height: "30px" }} />
@@ -191,10 +197,11 @@ export default function Home() {
             출력됩니다. <br />
             그리고 다운로드 버튼이 활성화됩니다. <br />
             다운로드 버튼을 누르시면 트친소표가 다운로드됩니다.
-
             <br />
             <br />
-            만약 프사 이미지가 안 뜰 경우, 코멘트 부분을 살짝 수정하시면 이미지가 다시 뜹니다.<br />
+            만약 프사 이미지가 안 뜰 경우, 코멘트 부분을 살짝 수정하시면
+            이미지가 다시 뜹니다.
+            <br />
             추후 문제 수정 예정
           </NoticeText>
 
