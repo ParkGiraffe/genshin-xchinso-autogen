@@ -160,15 +160,13 @@ export default function Home() {
           />
           <SectionDivder />
           <TopText>트친소 표 미리보기</TopText>
+          <TextColorPicker color={color} onChange={(e) => setColor(e)} />
           <BackgroundImage
             imageUpload={backImage}
             onUpload={(event) => {
               setBackImage(URL.createObjectURL(event.target.files[0]));
             }}
           />
-
-          <TextColorPicker color={color} onChange={(e) => setColor(e)} />
-
           <ImageCanvas
             backImage={backImage}
             bio={bio}
@@ -186,6 +184,7 @@ export default function Home() {
             farewell={farewell}
             trap={trap}
             playType={playType}
+            color={color}
           />
 
           <Button type="button" onClick={toggleMake2d}>
@@ -229,6 +228,7 @@ export default function Home() {
                 farewell={farewell}
                 trap={trap}
                 playType={playType}
+                color={color}
               />
             </>
           )}

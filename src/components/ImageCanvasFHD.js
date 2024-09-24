@@ -19,6 +19,7 @@ const ImageCanvasFHD = forwardRef(
       farewell,
       trap,
       playType,
+      color,
     },
     ref
   ) => {
@@ -59,7 +60,7 @@ const ImageCanvasFHD = forwardRef(
         const scaleFactor = canvas.width / 1920;
         const fontDefaultSize = 35;
         ctx.font = `${fontDefaultSize * scaleFactor}px Arial`;
-        ctx.fillStyle = "#000080"; // 텍스트 색상
+        ctx.fillStyle = color; // 텍스트 색상
         ctx.textAlign = "left"; // 텍스트 정렬
 
         // 텍스트 출력 위치
@@ -293,6 +294,7 @@ const ImageCanvasFHD = forwardRef(
       genre,
       farewell,
       trap,
+      color,
     ]);
 
     return (

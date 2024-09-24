@@ -21,7 +21,7 @@ const TextColorPicker = (props) => {
           onClick={togglePicker} // 클릭하면 ChromePicker 토글
           style={{
             backgroundColor: color,
-            width: "80px",
+            width: "100px",
             height: "40px",
             border: "2px solid #636363", // 바깥 테두리
             boxShadow: "inset 0 0 0 4px #EBEBEB", // 내부 테두리
@@ -30,11 +30,12 @@ const TextColorPicker = (props) => {
           }}
         ></div>
         {showPicker && (
-          <div style={{ position: "absolute" }}>
+          <div style={{ position: "absolute", transform: "translateX(-80px)" }}>
             <ChromePicker color={color} onChange={(e) => onChange(e.hex)} />
           </div>
         )}
       </div>
+      <div style={{width: '15px'}}/>
     </OneLineContainer>
   );
 };
