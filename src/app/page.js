@@ -19,7 +19,6 @@ import TextColorPicker from "@/components/TextColorPicker";
 
 export default function Home() {
   const [bio, setBio] = useState(null);
-  // const [imageUpload, setImageUpload] = useState(null);
   const [nick, setNick] = useState("");
   const [xId, setXId] = useState("");
   const [gender, setGender] = useState("미설정");
