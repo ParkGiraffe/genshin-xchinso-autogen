@@ -1,3 +1,6 @@
+import "./global.css";
+import Head from "next/head";
+
 export const metadata = {
   title: "원신 자기소개 표 셍성기",
   description:

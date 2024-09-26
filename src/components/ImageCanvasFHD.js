@@ -59,7 +59,7 @@ const ImageCanvasFHD = forwardRef(
         // 텍스트 스타일 설정
         const scaleFactor = canvas.width / 1920;
         const fontDefaultSize = 35;
-        ctx.font = `${fontDefaultSize * scaleFactor}px Arial`;
+        ctx.font = `${fontDefaultSize * scaleFactor}px Pretendard`;
         ctx.fillStyle = color; // 텍스트 색상
         ctx.textAlign = "left"; // 텍스트 정렬
 
@@ -98,9 +98,9 @@ const ImageCanvasFHD = forwardRef(
         };
 
         const secondColDraw = () => {
-          ctx.font = `bold ${60 * scaleFactor}px Arial`;
+          ctx.font = `bold ${60 * scaleFactor}px Pretendard`;
           ctx.fillText("X 정보", secondColStartXPoint, secondColStartYPoint);
-          ctx.font = `${fontDefaultSize * scaleFactor}px Arial`;
+          ctx.font = `${fontDefaultSize * scaleFactor}px Pretendard`;
 
           drawTextBox(
             ctx,
@@ -139,9 +139,9 @@ const ImageCanvasFHD = forwardRef(
         };
 
         const thirdColDraw = () => {
-          ctx.font = `bold ${60 * scaleFactor}px Arial`;
+          ctx.font = `bold ${60 * scaleFactor}px Pretendard`;
           ctx.fillText("원신 정보", thirdColStartXPoint, secondColStartYPoint);
-          ctx.font = `${fontDefaultSize * scaleFactor}px Arial`;
+          ctx.font = `${fontDefaultSize * scaleFactor}px Pretendard`;
 
           drawTextBox(
             ctx,
@@ -164,13 +164,13 @@ const ImageCanvasFHD = forwardRef(
             infoStartYPoint + margin * 2 + 30
           );
 
-          ctx.font = `bold ${60 * scaleFactor}px Arial`;
+          ctx.font = `bold ${60 * scaleFactor}px Pretendard`;
           ctx.fillText(
             "코멘트",
             thirdColStartXPoint,
             secondColStartYPoint + titleMargin * 5.5
           );
-          ctx.font = `${fontDefaultSize * scaleFactor}px Arial`;
+          ctx.font = `${fontDefaultSize * scaleFactor}px Pretendard`;
 
           drawTextBox(
             ctx,
@@ -209,9 +209,9 @@ const ImageCanvasFHD = forwardRef(
               line = tempLine;
             } else {
               if (count === 0 && isBold) {
-                ctx.font = `bold ${fontDefaultSize * scaleFactor}px Arial`;
+                ctx.font = `bold ${fontDefaultSize * scaleFactor}px Pretendard`;
                 ctx.fillText(line, x, currentY);
-                ctx.font = `${fontDefaultSize * scaleFactor}px Arial`;
+                ctx.font = `${fontDefaultSize * scaleFactor}px Pretendard`;
                 count++;
               } else {
                 ctx.fillText(line, x, currentY);
