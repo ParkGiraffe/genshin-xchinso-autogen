@@ -1,3 +1,4 @@
+import StyledComponentsRegistry from "../../lib/registry";
 import "./global.css";
 import Head from "next/head";
 
@@ -9,8 +10,10 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
-      <body>{children}</body>
+    <html>
+      <body>
+        <StyledComponentsRegistry>{children}</StyledComponentsRegistry>
+      </body>
     </html>
   );
 }
