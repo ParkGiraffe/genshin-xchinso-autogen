@@ -98,6 +98,7 @@ export default function Home() {
           <SectionDivder />
           <TopText>원신 정보</TopText>
           <Bio
+            placeholder={'최애캐 사진 넣기'}
             imageUpload={biasImage}
             onUpload={(event) => {
               setBiasImage(URL.createObjectURL(event.target.files[0]));
@@ -195,7 +196,7 @@ export default function Home() {
           />
           <NoticeText>
             <br />
-            만약 프사 이미지가 안 뜨거나 이상하게 보일 경우,
+            만약 프사와 최애캐 이미지가 안 뜨거나 순서가 반대로 보일 경우,
             <br />
             코멘트 부분을 살짝 수정하시면 이미지가 다시 뜹니다.
             <br />

@@ -8,7 +8,7 @@ import {
 } from "@/styles/BioBox";
 
 const Bio = (props) => {
-  const { imageUpload, onUpload } = props;
+  const { imageUpload, onUpload, placeholder = "프로필 사진 첨부하기" } = props;
   const [previewUrl, setPreviewUrl] = useState(null);
   const fileRef = useRef(null);
   const handleClick = () => {
@@ -28,7 +28,7 @@ const Bio = (props) => {
     <AddPhotoBox onClick={handleClick}>
       <AddPhotoInput ref={fileRef} type="file" onChange={onUpload} />
       {!imageUpload ? (
-        <FormText>프로필 사진 첨부하기</FormText>
+        <FormText>{placeholder}</FormText>
       ) : (
         <WatchPhotoBox>
           <PhotoImage src={previewUrl} alt="미리보기 이미지" />
