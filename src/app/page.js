@@ -29,6 +29,7 @@ export default function Home() {
   const [server, setServer] = useState("");
   const [playType, setPlayType] = useState("");
   const [bias, setBias] = useState("");
+  const [biasImage, setBiasImage] = useState(null);
 
   // X 정보
   const [xType, setXType] = useState(""); // 트위터 활동
@@ -96,6 +97,12 @@ export default function Home() {
           />
           <SectionDivder />
           <TopText>원신 정보</TopText>
+          <Bio
+            imageUpload={biasImage}
+            onUpload={(event) => {
+              setBiasImage(URL.createObjectURL(event.target.files[0]));
+            }}
+          />
           <OneLineTextInput
             placeholder="UID"
             value={uid}
@@ -176,6 +183,7 @@ export default function Home() {
             uid={uid}
             server={server}
             bias={bias}
+            biasImage={biasImage}
             comment={comment}
             xType={xType}
             tendency={tendency}
@@ -185,7 +193,14 @@ export default function Home() {
             playType={playType}
             color={color}
           />
-
+          <NoticeText>
+            <br />
+            만약 프사 이미지가 안 뜨거나 이상하게 보일 경우,
+            <br />
+            코멘트 부분을 살짝 수정하시면 이미지가 다시 뜹니다.
+            <br />
+            <br />
+          </NoticeText>
           <Button type="button" onClick={toggleMake2d}>
             고화질 이미지 생성
           </Button>
@@ -200,10 +215,6 @@ export default function Home() {
             폰트는 Pretendard를 사용했습니다.
             <br />
             <br />
-            만약 프사 이미지가 안 뜰 경우, 코멘트 부분을 살짝 수정하시면
-            이미지가 다시 뜹니다.
-            <br />
-            추후 문제 수정 예정
           </NoticeText>
 
           {showFhd && (
@@ -223,6 +234,7 @@ export default function Home() {
                 uid={uid}
                 server={server}
                 bias={bias}
+                biasImage={biasImage}
                 comment={comment}
                 xType={xType}
                 tendency={tendency}

@@ -12,6 +12,7 @@ const ImageCanvasFHD = forwardRef(
       uid,
       server,
       bias,
+      biasImage,
       comment,
       xType,
       tendency,
@@ -30,10 +31,13 @@ const ImageCanvasFHD = forwardRef(
       const ctx = canvas.getContext("2d");
 
       const img = new Image();
-      img.src = backImage || "/image2.png";
+      img.src = backImage || "/image1.png";
 
       const bioImg = new Image();
       bioImg.src = bio || "/bio.png";
+
+      const biasImg = new Image();
+      biasImg.src = biasImage || '/image2.png';
 
       img.onload = () => {
         // 캔버스 크기 설정 (1920 x 1080)
@@ -224,58 +228,111 @@ const ImageCanvasFHD = forwardRef(
           ctx.fillText(line, x, currentY);
           ctx.rect(x, y, fieldWidth, currentY - y + fontSize * spacing);
         }
+      };
+      // bio 이미지 비율 유지하며 자르기
+      bioImg.onload = () => {
+        const imgWidth = bioImg.width;
+        const imgHeight = bioImg.height;
 
-        // bio 이미지 비율 유지하며 자르기
-        bioImg.onload = () => {
-          const imgWidth = bioImg.width;
-          const imgHeight = bioImg.height;
+        const imgRatio = imgWidth / imgHeight;
+        const boxSize = 420; // 최종적으로 출력할 크기
 
-          const imgRatio = imgWidth / imgHeight;
-          const boxSize = 420; // 최종적으로 출력할 크기
+        let newWidth, newHeight, cropX, cropY;
 
-          let newWidth, newHeight, cropX, cropY;
+        if (imgRatio > 1) {
+          // 이미지가 가로로 긴 경우
+          newHeight = boxSize;
+          newWidth = imgRatio * boxSize;
+          cropX = (imgWidth - imgHeight) / 2;
+          cropY = 0;
+        } else {
+          // 이미지가 세로로 긴 경우
+          newWidth = boxSize;
+          newHeight = boxSize / imgRatio;
+          cropX = 0;
+          cropY = (imgHeight - imgWidth) / 2;
+        }
 
-          if (imgRatio > 1) {
-            // 이미지가 가로로 긴 경우
-            newHeight = boxSize;
-            newWidth = imgRatio * boxSize;
-            cropX = (imgWidth - imgHeight) / 2;
-            cropY = 0;
-          } else {
-            // 이미지가 세로로 긴 경우
-            newWidth = boxSize;
-            newHeight = boxSize / imgRatio;
-            cropX = 0;
-            cropY = (imgHeight - imgWidth) / 2;
-          }
+        // bio 이미지를 동그랗게 그리기
+        const centerX = 90 + boxSize / 2;
+        const centerY = 80 + boxSize / 2;
+        ctx.save();
+        ctx.beginPath();
+        ctx.arc(centerX, centerY, boxSize / 2, 0, Math.PI * 2);
+        ctx.clip();
+        ctx.drawImage(
+          bioImg,
+          cropX,
+          cropY,
+          imgWidth - cropX * 2,
+          imgHeight - cropY * 2,
+          90,
+          80,
+          boxSize,
+          boxSize
+        );
+        ctx.restore();
 
-          // bio 이미지를 동그랗게 그리기
-          const centerX = 90 + boxSize / 2;
-          const centerY = 80 + boxSize / 2;
-          ctx.save();
-          ctx.beginPath();
-          ctx.arc(centerX, centerY, boxSize / 2, 0, Math.PI * 2);
-          ctx.clip();
-          ctx.drawImage(
-            bioImg,
-            cropX,
-            cropY,
-            imgWidth - cropX * 2,
-            imgHeight - cropY * 2,
-            90,
-            80,
-            boxSize,
-            boxSize
-          );
-          ctx.restore();
+        // 3px 테두리 추가
+        ctx.beginPath();
+        ctx.arc(centerX, centerY, boxSize / 2, 0, Math.PI * 2);
+        ctx.lineWidth = 5;
+        ctx.strokeStyle = "#000000";
+        ctx.stroke();
+      };
 
-          // 3px 테두리 추가
-          ctx.beginPath();
-          ctx.arc(centerX, centerY, boxSize / 2, 0, Math.PI * 2);
-          ctx.lineWidth = 5;
-          ctx.strokeStyle = "#000000";
-          ctx.stroke();
-        };
+      // bias 이미지 비율 유지하며 자르기
+      biasImg.onload = () => {
+        const imgWidth = biasImg.width;
+        const imgHeight = biasImg.height;
+
+        const imgRatio = imgWidth / imgHeight;
+        const boxSize = 250; // 최종적으로 출력할 크기
+
+        let newWidth, newHeight, cropX, cropY;
+
+        if (imgRatio > 1) {
+          // 이미지가 가로로 긴 경우
+          newHeight = boxSize;
+          newWidth = imgRatio * boxSize;
+          cropX = (imgWidth - imgHeight) / 2;
+          cropY = 0;
+        } else {
+          // 이미지가 세로로 긴 경우
+          newWidth = boxSize;
+          newHeight = boxSize / imgRatio;
+          cropX = 0;
+          cropY = (imgHeight - imgWidth) / 2;
+        }
+
+        // bio 이미지를 동그랗게 그리기
+        let x = 360;
+        let y = 275;
+        const centerX = x + boxSize / 2;
+        const centerY = y + boxSize / 2;
+        ctx.save();
+        ctx.beginPath();
+        ctx.arc(centerX, centerY, boxSize / 2, 0, Math.PI * 2);
+        ctx.clip();
+        ctx.drawImage(
+          biasImg,
+          cropX,
+          cropY,
+          imgWidth - cropX * 2,
+          imgHeight - cropY * 2,
+          x,
+          y,
+          boxSize,
+          boxSize
+        );
+        ctx.restore();
+
+        // 3px 테두리 추가
+        ctx.beginPath();
+        ctx.arc(centerX, centerY, boxSize / 2, 0, Math.PI * 2);
+        ctx.lineWidth = 5;
+        ctx.strokeStyle = "#000000";
+        ctx.stroke();
       };
     }, [
       backImage,
@@ -288,6 +345,7 @@ const ImageCanvasFHD = forwardRef(
       server,
       playType,
       bias,
+      biasImage,
       comment,
       xType,
       tendency,
