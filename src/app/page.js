@@ -98,7 +98,7 @@ export default function Home() {
           <SectionDivder />
           <TopText>원신 정보</TopText>
           <Bio
-            placeholder={'최애캐 사진 넣기'}
+            placeholder={"최애캐 사진 넣기"}
             imageUpload={biasImage}
             onUpload={(event) => {
               setBiasImage(URL.createObjectURL(event.target.files[0]));
@@ -116,7 +116,7 @@ export default function Home() {
             onChange={(e) => setServer(e.target.value)}
           />
           <Checklist
-            placeholder='플레이타입'
+            placeholder="플레이타입"
             elements={[
               "스크린샷",
               "나선비경",
@@ -155,12 +155,17 @@ export default function Home() {
               setGenre(e);
             }}
           />
-          <OneLineDropdown
+          <Checklist
+            placeholder="이별"
+            elements={["언팔로우", "블언블", "블락", "트정X"]}
+            onChecked={(e) => setFarewell(e)}
+          />
+          {/* <OneLineDropdown
             placeholder={"이별"}
             value={farewell}
             pickList={["언팔로우", "블언블", "블락", "트정X"]}
             onChange={(e) => setFarewell(e.target.value)}
-          />
+          /> */}
           <MultiLineTextInput
             placeholder="코멘트"
             value={comment}
