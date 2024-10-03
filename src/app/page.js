@@ -116,6 +116,7 @@ export default function Home() {
             onChange={(e) => setServer(e.target.value)}
           />
           <Checklist
+            placeholder='플레이타입'
             elements={[
               "스크린샷",
               "나선비경",
