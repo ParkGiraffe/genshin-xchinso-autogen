@@ -226,9 +226,15 @@ export default function Home() {
 
           {showFhd && (
             <>
+              <div style={{height: '10px'}}/>
               <DownloadButton type="button" onClick={handleDownload}>
                 다운로드
               </DownloadButton>
+              <NoticeText>
+                <br />
+                아이폰 Safari는 다운로드 버튼을 지원하지 않습니다.
+                밑의 이미지를 꾹 눌러서, '사진 앱에 저장'하시면 됩니다.
+              </NoticeText>
               <SectionDivder />
               <ImageCanvasFHD
                 ref={imageRef}

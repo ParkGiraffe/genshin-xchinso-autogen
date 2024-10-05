@@ -17,9 +17,8 @@ const Bio = (props) => {
 
   useEffect(() => {
     if (imageUpload) {
-      // const url = URL.createObjectURL(imageUpload);
       setPreviewUrl(imageUpload);
-      // onUpload(url);
+
       return () => URL.revokeObjectURL(imageUpload);
     }
   }, [imageUpload]);
