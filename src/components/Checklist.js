@@ -7,7 +7,6 @@ import {
 import { ChecklistContainer } from "@/styles/Containers";
 import React, { useState } from "react";
 
-// Styled Components 정의
 
 export default function Checklist(props) {
   const { elements = [1, 2, 3], onChecked, placeholder } = props;
