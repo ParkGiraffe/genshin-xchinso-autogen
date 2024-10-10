@@ -1,7 +1,6 @@
 import { FormText, FormTextContainer } from "@/styles/Texts";
 import { OneLineContainer } from "@/styles/Containers";
 import styled from "styled-components";
-import { useState } from "react";
 import { Select, SelectContainer } from "@/styles/Inputs";
 
 const OneLineDropdown = (props) => {
