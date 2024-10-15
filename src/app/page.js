@@ -160,12 +160,6 @@ export default function Home() {
             elements={["언팔로우", "블언블", "블락", "트정X"]}
             onChecked={(e) => setFarewell(e)}
           />
-          {/* <OneLineDropdown
-            placeholder={"이별"}
-            value={farewell}
-            pickList={["언팔로우", "블언블", "블락", "트정X"]}
-            onChange={(e) => setFarewell(e.target.value)}
-          /> */}
           <MultiLineTextInput
             placeholder="코멘트"
             value={comment}
