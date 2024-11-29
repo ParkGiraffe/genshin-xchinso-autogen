@@ -2,7 +2,6 @@ import styled from "styled-components";
 
 const AddPhotoBox = styled.div`
   display: flex;
-  /* flex-direction: column; */
   align-items: center;
   justify-content: center;
   height: 250px;
