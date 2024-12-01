@@ -44,8 +44,6 @@ const MultiLineContainer = styled.div`
   justify-content: flex-end;
   width: 300px;
   margin-bottom: 9px;
-
-  /* background-color: pink; */
 `;
 
 const ChecklistContainer = styled.div`

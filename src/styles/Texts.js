@@ -14,7 +14,6 @@ const TopText = styled.text`
 const FormTextContainer = styled.div`
   display: flex;
   flex: 1;
-  /* background-color: blue; */
   justify-content: center;
 `;
 
