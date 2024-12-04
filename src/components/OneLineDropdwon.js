@@ -16,7 +16,9 @@ const OneLineDropdown = (props) => {
             선택하세요
           </option>
           {pickList.map((element, idx) => (
-            <option key={idx} value={element}>{element}</option>
+            <option key={idx} value={element}>
+              {element}
+            </option>
           ))}
         </Select>
         <Arrow>▼</Arrow>
@@ -26,10 +28,6 @@ const OneLineDropdown = (props) => {
 };
 
 export default OneLineDropdown;
-
-const Spacer = styled.div`
-  width: 2px;
-`;
 
 const Arrow = styled.div`
   position: absolute;
