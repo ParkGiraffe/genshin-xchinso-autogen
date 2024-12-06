@@ -11,7 +11,7 @@ import { Button, DownloadButton } from "@/styles/Buttons";
 import { Form, FormContainer, Main, SectionDivder } from "@/styles/Containers";
 import MultiLineTextInput from "@/components/MultiLineTextInput";
 import YNCheck from "@/components/YNCheck";
-import ImageCanvas from "@/components/ImageCanvas";
+import ImageCanvas from "@/components/ImageCanvasGenshin";
 import Checklist from "@/components/Checklist";
 import BackgroundImage from "@/components/BackgroundImage";
 import ImageCanvasFHD from "@/components/ImageCanvasFHD";
@@ -24,7 +24,10 @@ export default function Home() {
   const [gender, setGender] = useState("미설정");
   const [age, setAge] = useState("미설정");
 
-  // 원신 정보
+  // 게임 정보
+  const [gameName, setGameName] = useState("");
+  const [englishName, setEnglishName] = useState("");
+
   const [uid, setUid] = useState("");
   const [server, setServer] = useState("");
   const [playType, setPlayType] = useState("");
@@ -96,7 +99,7 @@ export default function Home() {
             onChange={(e) => setAge(e.target.value)}
           />
           <SectionDivder />
-          <TopText>원신 정보</TopText>
+          <TopText>게임 정보</TopText>
           <Bio
             placeholder={"최애캐 사진 넣기"}
             imageUpload={biasImage}
@@ -105,17 +108,26 @@ export default function Home() {
             }}
           />
           <OneLineTextInput
+            placeholder="게임이름"
+            value={gameName}
+            onChange={(e) => setGameName(e.target.value)}
+          />
+          <OneLineTextInput
+            placeholder="영문 게임이름"
+            value={englishName}
+            onChange={(e) => setEnglishName(e.target.value)}
+          />
+          <OneLineTextInput
             placeholder="UID"
             value={uid}
             onChange={(e) => setUid(e.target.value)}
           />
-          <OneLineDropdown
-            placeholder={"서버"}
+          <OneLineTextInput
+            placeholder="서버"
             value={server}
-            pickList={["Asia", "America", "Europe"]}
             onChange={(e) => setServer(e.target.value)}
           />
-          <Checklist
+          {/* <Checklist
             placeholder="플레이타입"
             elements={[
               "스크린샷",
@@ -126,7 +138,7 @@ export default function Home() {
               "캐릭육성",
             ]}
             onChecked={(e) => setPlayType(e)}
-          />
+          /> */}
           <OneLineTextInput
             placeholder="최애캐"
             value={bias}
@@ -136,7 +148,7 @@ export default function Home() {
           <TopText>X 정보</TopText>
           <Checklist
             placeholder="트위터 활동"
-            elements={["RT", "마음", "일상/썰", "그림", "탐라대화", "구독"]}
+            elements={["RT", "마음", "일상/글", "그림", "구독"]}
             onChecked={(e) => setXType(e)}
           />
           <Checklist
@@ -166,14 +178,14 @@ export default function Home() {
             onChange={(e) => setComment(e.target.value)}
           />
           <SectionDivder />
-          <TopText>트친소 표 미리보기</TopText>
+          {/* <TopText>트친소 표 미리보기</TopText>
           <TextColorPicker color={color} onChange={(e) => setColor(e)} />
           <BackgroundImage
             imageUpload={backImage}
             onUpload={(event) => {
               setBackImage(URL.createObjectURL(event.target.files[0]));
             }}
-          />
+          /> */}
           <ImageCanvas
             backImage={backImage}
             bio={bio}
@@ -191,7 +203,9 @@ export default function Home() {
             genre={genre}
             farewell={farewell}
             trap={trap}
-            playType={playType}
+            // playType={playType}
+            gameName={gameName}
+            englishName={englishName}
             color={color}
           />
           <NoticeText>
@@ -220,14 +234,14 @@ export default function Home() {
 
           {showFhd && (
             <>
-              <div style={{height: '10px'}}/>
+              <div style={{ height: "10px" }} />
               <DownloadButton type="button" onClick={handleDownload}>
                 다운로드
               </DownloadButton>
               <NoticeText>
                 <br />
-                아이폰 Safari는 다운로드 버튼을 지원하지 않습니다.
-                밑의 이미지를 꾹 눌러서, '사진 앱에 저장'하시면 됩니다.
+                아이폰 Safari는 다운로드 버튼을 지원하지 않습니다. 밑의 이미지를
+                꾹 눌러서, '사진 앱에 저장'하시면 됩니다.
               </NoticeText>
               <SectionDivder />
               <ImageCanvasFHD

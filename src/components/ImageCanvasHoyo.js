@@ -9,7 +9,8 @@ const ImageCanvas = ({
   age,
   uid,
   server,
-  playType,
+  gameName,
+  englishName,
   bias,
   biasImage,
   comment,
@@ -33,7 +34,7 @@ const ImageCanvas = ({
     bioImg.src = bio || "/bio.png";
 
     const biasImg = new Image();
-    biasImg.src = biasImage || '/image2.png';
+    biasImg.src = biasImage || "/image2.png";
 
     img.onload = () => {
       // 캔버스 크기 설정 (1920 x 1080)
@@ -53,8 +54,9 @@ const ImageCanvas = ({
       );
 
       // 불투명도 80%인 흰색 사각형 그리기
-      ctx.fillStyle = "rgba(255, 255, 255, 0.9)";
-      ctx.fillRect(40, 30, canvas.width - 80, canvas.height - 60);
+      let leftPadding = 800;
+      ctx.fillStyle = "rgba(255, 255, 100, 1)";
+      ctx.fillRect(leftPadding, 0, canvas.width, canvas.height);
 
       // 텍스트 스타일 설정
       const scaleFactor = canvas.width / 1920;
@@ -64,77 +66,105 @@ const ImageCanvas = ({
       ctx.textAlign = "left"; // 텍스트 정렬
 
       // 텍스트 출력 위치
-      const firstColStartXPoint = 90;
-      const firstColStartYPoint = 550;
-      const secondColStartXPoint = 700;
-      const secondColStartYPoint = 80;
+      const firstColStartXPoint = 850;
+      const firstColStartYPoint = 300;
+      const secondColStartXPoint = 1350;
+      const secondColStartYPoint = 300;
       const thirdColStartXPoint = 1290;
-      // const thirdColStartYPoint = 80;
+      const thirdColStartYPoint = 80;
       const titleMargin = 120;
-      const infoStartYPoint = secondColStartYPoint + titleMargin;
-      const margin = 175;
+
+      const margin = 125;
 
       const firstColDraw = () => {
         drawTextBox(
           ctx,
-          `닉네임 (X id)\n${nick} (@${xId})`,
+          `✧ 닉네임 (X id)\n${nick} (@${xId})`,
           firstColStartXPoint,
           firstColStartYPoint
         );
 
         drawTextBox(
           ctx,
-          `성별\n${gender}`,
+          `✧ 성별\n${gender}`,
           firstColStartXPoint,
           firstColStartYPoint + margin
         );
 
         drawTextBox(
           ctx,
-          `연령대\n${age}`,
+          `✧ 연령대\n${age}`,
           firstColStartXPoint,
           firstColStartYPoint + margin * 2
+        );
+
+        drawTextBox(
+          ctx,
+          `✧ 트위터 활동\n${xType}`,
+          firstColStartXPoint,
+          firstColStartYPoint + margin * 3
+        );
+
+        drawTextBox(
+          ctx,
+          `✧ 덕질 성향\n${tendency}`,
+          firstColStartXPoint,
+          firstColStartYPoint + margin * 4
+        );
+        drawTextBox(
+          ctx,
+          `✧ 이별\n${farewell}`,
+          firstColStartXPoint,
+          firstColStartYPoint + margin * 5
         );
       };
 
       const secondColDraw = () => {
-        ctx.font = `bold ${60 * scaleFactor}px Pretendard`;
-        ctx.fillText("X 정보", secondColStartXPoint, secondColStartYPoint);
+        drawTextBox(
+          ctx,
+          `✧ UID / 서버\n${uid}/${server}`,
+          secondColStartXPoint,
+          secondColStartYPoint
+        );
+        drawTextBox(
+          ctx,
+          `✧ 최애캐\n${bias}`,
+          secondColStartXPoint,
+          secondColStartYPoint + margin
+        );
+
+        drawTextBox(
+          ctx,
+          `✧ 타장르\n${genre}`,
+          secondColStartXPoint,
+          secondColStartYPoint + margin * 2
+        );
+
+        drawTextBox(
+          ctx,
+          `✧ 지뢰\n${trap}`,
+          secondColStartXPoint,
+          secondColStartYPoint + margin * 3
+        );
+
+
+
+        ctx.font = `bold ${fontDefaultSize * scaleFactor}px Pretendard`;
+        ctx.fillText(
+          "✧ 코멘트",
+          secondColStartXPoint,
+          secondColStartYPoint + margin * 4
+        );
         ctx.font = `${fontDefaultSize * scaleFactor}px Pretendard`;
 
         drawTextBox(
           ctx,
-          `트위터 활동\n${xType}`,
+          `${comment}`,
           secondColStartXPoint,
-          infoStartYPoint
-        );
-
-        drawTextBox(
-          ctx,
-          `덕질 성향\n${tendency}`,
-          secondColStartXPoint,
-          infoStartYPoint + margin
-        );
-
-        drawTextBox(
-          ctx,
-          `타장르\n${genre}`,
-          secondColStartXPoint,
-          infoStartYPoint + margin * 2
-        );
-
-        drawTextBox(
-          ctx,
-          `이별\n${farewell}`,
-          secondColStartXPoint,
-          infoStartYPoint + margin * 3
-        );
-
-        drawTextBox(
-          ctx,
-          `지뢰\n${trap}`,
-          secondColStartXPoint,
-          infoStartYPoint + margin * 4
+          secondColStartYPoint + margin * 4.5,
+          510,
+          1,
+          false
         );
       };
 
@@ -147,45 +177,13 @@ const ImageCanvas = ({
           ctx,
           `UID / 서버\n${uid}/${server}`,
           thirdColStartXPoint,
-          infoStartYPoint
-        );
-
-        drawTextBox(
-          ctx,
-          `플레이타입\n${playType}`,
-          thirdColStartXPoint,
-          infoStartYPoint + margin
-        );
-
-        drawTextBox(
-          ctx,
-          `최애캐\n${bias}`,
-          thirdColStartXPoint,
-          infoStartYPoint + margin * 2 + 30
-        );
-
-        ctx.font = `bold ${60 * scaleFactor}px Pretendard`;
-        ctx.fillText(
-          "코멘트",
-          thirdColStartXPoint,
-          secondColStartYPoint + titleMargin * 5.5
-        );
-        ctx.font = `${fontDefaultSize * scaleFactor}px Pretendard`;
-
-        drawTextBox(
-          ctx,
-          `${comment}`,
-          thirdColStartXPoint,
-          secondColStartYPoint + titleMargin * 5.5 + margin / 2,
-          510,
-          1,
-          false
+          secondColStartYPoint
         );
       };
 
       firstColDraw();
       secondColDraw();
-      thirdColDraw();
+      // thirdColDraw();
 
       function drawTextBox(
         ctx,
@@ -340,7 +338,7 @@ const ImageCanvas = ({
     age,
     uid,
     server,
-    playType,
+
     bias,
     biasImage,
     comment,

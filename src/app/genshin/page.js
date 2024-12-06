@@ -11,7 +11,7 @@ import { Button, DownloadButton } from "@/styles/Buttons";
 import { Form, FormContainer, Main, SectionDivder } from "@/styles/Containers";
 import MultiLineTextInput from "@/components/MultiLineTextInput";
 import YNCheck from "@/components/YNCheck";
-import ImageCanvas from "@/components/ImageCanvas";
+import ImageCanvas from "@/components/ImageCanvasGenshin";
 import Checklist from "@/components/Checklist";
 import BackgroundImage from "@/components/BackgroundImage";
 import ImageCanvasFHD from "@/components/ImageCanvasFHD";
@@ -96,7 +96,7 @@ export default function Home() {
             onChange={(e) => setAge(e.target.value)}
           />
           <SectionDivder />
-          <TopText>스타레일 정보</TopText>
+          <TopText>원신 정보</TopText>
           <Bio
             placeholder={"최애캐 사진 넣기"}
             imageUpload={biasImage}
@@ -136,7 +136,7 @@ export default function Home() {
           <TopText>X 정보</TopText>
           <Checklist
             placeholder="트위터 활동"
-            elements={["RT", "마음", "일상/글", "그림", "탐라대화", "구독"]}
+            elements={["RT", "마음", "일상/썰", "그림", "탐라대화", "구독"]}
             onChecked={(e) => setXType(e)}
           />
           <Checklist
@@ -220,14 +220,14 @@ export default function Home() {
 
           {showFhd && (
             <>
-              <div style={{ height: "10px" }} />
+              <div style={{height: '10px'}}/>
               <DownloadButton type="button" onClick={handleDownload}>
                 다운로드
               </DownloadButton>
               <NoticeText>
                 <br />
-                아이폰 Safari는 다운로드 버튼을 지원하지 않습니다. 밑의 이미지를
-                꾹 눌러서, '사진 앱에 저장'하시면 됩니다.
+                아이폰 Safari는 다운로드 버튼을 지원하지 않습니다.
+                밑의 이미지를 꾹 눌러서, '사진 앱에 저장'하시면 됩니다.
               </NoticeText>
               <SectionDivder />
               <ImageCanvasFHD
