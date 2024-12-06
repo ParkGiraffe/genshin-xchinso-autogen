@@ -68,6 +68,27 @@ export default function Home() {
   return (
     <Main>
       <FormContainer>
+        <h1>공용 트친소 제작기</h1>
+        <span style={{ fontSize: "25px", fontWeight: "bold" }}>
+          호요버스, 명조 등등
+        </span>
+        <span style={{ fontSize: "17px", marginTop: "30px" }}>
+          made by 박기린
+        </span>
+        <a
+          href="https://arnopark.tistory.com/"
+          target="_blank"
+          style={{ fontSize: "17px", marginTop: "12px" }}
+        >
+          블로그
+        </a>
+        <a
+          href="https://x.com/park_giraffe_"
+          target="_blank"
+          style={{ fontSize: "17px", marginTop: "12px" }}
+        >
+          X(트위터)
+        </a>
         <SectionDivder />
         <TopText>작성자 정보</TopText>
         {/* <Bio
