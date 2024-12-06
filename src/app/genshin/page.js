@@ -1,5 +1,5 @@
 "use client";
-import './global.css';
+import '../global.css';
 
 import { useState, useRef } from "react";
 
