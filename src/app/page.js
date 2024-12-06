@@ -1,4 +1,5 @@
 "use client";
+import "./global.css";
 
 import { useState, useRef } from "react";
 
@@ -11,7 +12,7 @@ import { Button, DownloadButton } from "@/styles/Buttons";
 import { Form, FormContainer, Main, SectionDivder } from "@/styles/Containers";
 import MultiLineTextInput from "@/components/MultiLineTextInput";
 import YNCheck from "@/components/YNCheck";
-import ImageCanvas from "@/components/ImageCanvasGenshin";
+import ImageCanvas from "@/components/ImageCanvasHoyo";
 import Checklist from "@/components/Checklist";
 import BackgroundImage from "@/components/BackgroundImage";
 import ImageCanvasFHD from "@/components/ImageCanvasFHD";
@@ -32,7 +33,7 @@ export default function Home() {
   const [server, setServer] = useState("");
   const [playType, setPlayType] = useState("");
   const [bias, setBias] = useState("");
-  const [biasImage, setBiasImage] = useState(null);
+  // const [biasImage, setBiasImage] = useState(null);
 
   // X 정보
   const [xType, setXType] = useState(""); // 트위터 활동
@@ -43,10 +44,10 @@ export default function Home() {
   const [comment, setComment] = useState(""); // 코멘트
 
   // 이미지
-  const [backImage, setBackImage] = useState(null);
+  // const [backImage, setBackImage] = useState(null);
   const imageRef = useRef(null);
 
-  const [color, setColor] = useState("#000080"); // 폰트 색상
+  const [color, setColor] = useState("#767676"); // 폰트 색상
 
   const [showFhd, setShowFhd] = useState(false);
 
@@ -59,7 +60,7 @@ export default function Home() {
     html2canvas(element, { useCORS: true }).then((canvas) => {
       const link = document.createElement("a");
       link.href = canvas.toDataURL("image/png");
-      link.download = "profile-overlay.png";
+      link.download = "profile.png";
       link.click();
     });
   };
@@ -69,12 +70,12 @@ export default function Home() {
       <FormContainer>
         <SectionDivder />
         <TopText>작성자 정보</TopText>
-        <Bio
+        {/* <Bio
           imageUpload={bio}
           onUpload={(event) => {
             setBio(URL.createObjectURL(event.target.files[0]));
           }}
-        />
+        /> */}
         <Form>
           <OneLineTextInput
             placeholder="닉네임"
@@ -102,9 +103,9 @@ export default function Home() {
           <TopText>게임 정보</TopText>
           <Bio
             placeholder={"최애캐 사진 넣기"}
-            imageUpload={biasImage}
+            imageUpload={bio}
             onUpload={(event) => {
-              setBiasImage(URL.createObjectURL(event.target.files[0]));
+              setBio(URL.createObjectURL(event.target.files[0]));
             }}
           />
           <OneLineTextInput
@@ -178,16 +179,17 @@ export default function Home() {
             onChange={(e) => setComment(e.target.value)}
           />
           <SectionDivder />
-          {/* <TopText>트친소 표 미리보기</TopText>
+          <TopText>트친소 표 미리보기</TopText>
           <TextColorPicker color={color} onChange={(e) => setColor(e)} />
-          <BackgroundImage
-            imageUpload={backImage}
-            onUpload={(event) => {
-              setBackImage(URL.createObjectURL(event.target.files[0]));
+          {/* <BackgroundImage
+          imageUpload={backImage}
+          onUpload={(event) => {
+            setBackImage(URL.createObjectURL(event.target.files[0]));
             }}
           /> */}
+          <div style={{ height: "20px" }} />
           <ImageCanvas
-            backImage={backImage}
+            ref={null}
             bio={bio}
             nick={nick}
             xId={xId}
@@ -196,7 +198,6 @@ export default function Home() {
             uid={uid}
             server={server}
             bias={bias}
-            biasImage={biasImage}
             comment={comment}
             xType={xType}
             tendency={tendency}
@@ -207,10 +208,11 @@ export default function Home() {
             gameName={gameName}
             englishName={englishName}
             color={color}
+            isFhd={false}
           />
           <NoticeText>
             <br />
-            만약 프사와 최애캐 이미지가 안 뜨거나 순서가 반대로 보일 경우,
+            이미지가 안 뜨거나 순서가 반대로 보일 경우,
             <br />
             코멘트 부분을 살짝 수정하시면 이미지가 다시 뜹니다.
             <br />
@@ -244,9 +246,8 @@ export default function Home() {
                 꾹 눌러서, '사진 앱에 저장'하시면 됩니다.
               </NoticeText>
               <SectionDivder />
-              <ImageCanvasFHD
+              <ImageCanvas
                 ref={imageRef}
-                backImage={backImage}
                 bio={bio}
                 nick={nick}
                 xId={xId}
@@ -255,15 +256,17 @@ export default function Home() {
                 uid={uid}
                 server={server}
                 bias={bias}
-                biasImage={biasImage}
                 comment={comment}
                 xType={xType}
                 tendency={tendency}
                 genre={genre}
                 farewell={farewell}
                 trap={trap}
-                playType={playType}
+                // playType={playType}
+                gameName={gameName}
+                englishName={englishName}
                 color={color}
+                isFhd={true}
               />
             </>
           )}

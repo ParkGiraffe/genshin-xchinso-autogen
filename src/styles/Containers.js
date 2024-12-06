@@ -28,11 +28,11 @@ const Form = styled.form`
 
 const OneLineContainer = styled.div`
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   align-items: center;
   justify-content: flex-end;
   width: 300px;
-  margin-bottom: 0.7em;
+  margin-bottom: 1em;
 
   /* background-color: pink; */
 `;
@@ -53,7 +53,7 @@ const ChecklistContainer = styled.div`
   width: 300px;
   margin-left: 2em;
   margin-top: 1em;
-  margin-bottom: 1.3em;
+  margin-bottom: 2em;
   /* background-color: pink; */
 `;
 
