@@ -232,7 +232,7 @@ const ImageCanvas = forwardRef(
           ctx.fillText(`✧`, 1790, gameNameStartYPoint - 55);
           ctx.font = `bold ${80 * scaleFactor}px Pretendard`;
           ctx.fillText(`✧`, 1730, gameNameStartYPoint - 65);
-          ctx.font = `bold ${120 * scaleFactor}px MaruBuriBold`;
+          ctx.font = `bold ${115 * scaleFactor}px MaruBuriBold`;
           ctx.fillStyle = "#3e3e3e"; // 텍스트 색상
           ctx.fillText(
             `${englishName}`,

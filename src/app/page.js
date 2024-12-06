@@ -14,8 +14,6 @@ import MultiLineTextInput from "@/components/MultiLineTextInput";
 import YNCheck from "@/components/YNCheck";
 import ImageCanvas from "@/components/ImageCanvasHoyo";
 import Checklist from "@/components/Checklist";
-import BackgroundImage from "@/components/BackgroundImage";
-import ImageCanvasFHD from "@/components/ImageCanvasFHD";
 import TextColorPicker from "@/components/TextColorPicker";
 
 export default function Home() {
@@ -26,12 +24,11 @@ export default function Home() {
   const [age, setAge] = useState("미설정");
 
   // 게임 정보
-  const [gameName, setGameName] = useState("");
-  const [englishName, setEnglishName] = useState("");
+  const [gameName, setGameName] = useState("ex. 붕괴: 스타레일");
+  const [englishName, setEnglishName] = useState("ex. Honkai: StarRail");
 
   const [uid, setUid] = useState("");
   const [server, setServer] = useState("");
-  const [playType, setPlayType] = useState("");
   const [bias, setBias] = useState("");
   // const [biasImage, setBiasImage] = useState(null);
 
