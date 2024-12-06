@@ -104,7 +104,7 @@ const ImageCanvas = forwardRef(
 
           // 텍스트 스타일 설정
           const scaleFactor = canvas.width / 1920;
-          const fontDefaultSize = 35;
+          const fontDefaultSize = 32;
           ctx.font = `${fontDefaultSize * scaleFactor}px Pretendard`;
           ctx.fillStyle = color; // 텍스트 색상
           ctx.textAlign = "left"; // 텍스트 정렬
@@ -112,7 +112,7 @@ const ImageCanvas = forwardRef(
           // 텍스트 출력 위치
           const firstColStartXPoint = 850;
           const firstColStartYPoint = 320;
-          const secondColStartXPoint = 1350;
+          const secondColStartXPoint = 1400;
           const secondColStartYPoint = 320;
           const thirdColStartXPoint = 1290;
           const thirdColStartYPoint = 80;
