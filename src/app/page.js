@@ -20,8 +20,8 @@ export default function Home() {
   const [bio, setBio] = useState(null);
   const [nick, setNick] = useState("");
   const [xId, setXId] = useState("");
-  const [gender, setGender] = useState("미설정");
-  const [age, setAge] = useState("미설정");
+  const [gender, setGender] = useState("남자");
+  const [age, setAge] = useState("성인");
 
   // 게임 정보
   const [gameName, setGameName] = useState("ex. 붕괴: 스타레일");
@@ -108,7 +108,7 @@ export default function Home() {
           <OneLineDropdown
             placeholder={"성별"}
             value={gender}
-            pickList={["남자", "여자", "비공개"]}
+            pickList={["남성", "여성", "비공개"]}
             onChange={(e) => setGender(e.target.value)}
           />
           <OneLineDropdown
