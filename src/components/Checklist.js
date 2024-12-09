@@ -7,9 +7,8 @@ import {
 import { ChecklistContainer } from "@/styles/Containers";
 import React, { useState } from "react";
 
-
 export default function Checklist(props) {
-  const { elements = [1, 2, 3], onChecked, placeholder } = props;
+  const { elements, onChecked, placeholder } = props;
   const [checkedList, setCheckedList] = useState(
     new Array(elements.length).fill(false)
   );
