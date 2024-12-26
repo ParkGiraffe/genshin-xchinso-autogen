@@ -1,3 +1,8 @@
+## 트친소표 제작 사이트
+링크 : https://hoyoverse-xchinso.vercel.app/
+
+
+
 ## **제작과정 및 에러/오류 해결과정**
 |id  |title  | link |
 |----|-------|------|
